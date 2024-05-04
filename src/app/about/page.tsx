@@ -19,22 +19,22 @@ export default function Component() {
                 className="grid text-gray-200 max-w-prose text-base gap-4"
               >
                 <p className=" dark:text-[#f8f8f8]">
-                  This Marian Novena website was sponsored by the FECAMDS 026
-                  class MBBS. We are a group of medical students dedicated to
-                  promoting the devotion to the Blessed Virgin Mary through this
-                  online platform.
+                  This Rosary Challenge website was sponsored by the FECAMDS 026
+                  class Rosary Challenge. We are a group of medical students
+                  dedicated to promoting the devotion to the Blessed Virgin Mary
+                  through this online platform.
                 </p>
                 <p className=" dark:text-[#f8f8f8]">
                   Our goal is to provide a space for people to come together and
-                  pray the Marian Novena, a powerful prayer that has been a
+                  pray the Rosary Challenge, a powerful prayer that has been a
                   source of comfort and strength for many throughout the
                   centuries. We believe that by fostering this devotion, we can
                   help to bring about a greater sense of unity and community
                   among believers.
                 </p>
                 <p className=" dark:text-[#f8f8f8]">
-                  We are grateful to the FECAMDS 026 class MBBS for their
-                  generous support in making this website possible. Their
+                  We are grateful to the FECAMDS 026 class Rosary Challenge for
+                  their generous support in making this website possible. Their
                   commitment to the Blessed Mother and to the spiritual
                   well-being of others is truly inspiring.
                 </p>

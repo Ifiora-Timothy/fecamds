@@ -19,6 +19,7 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 import Footer from "@/components/reusable/Footer";
 import Navbar from "@/components/reusable/Navbar";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function home() {
@@ -54,7 +55,7 @@ export default function home() {
                   </Link>
                 </div>
               </div>
-              <img
+              <Image
                 alt="Blessed Virgin Mary"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
                 height="550"
@@ -98,7 +99,7 @@ export default function home() {
                           Personal Intentions
                         </h3>
                         <p className="text-gray-700 dark:text-gray-300">
-                          Pray the daily intentions to each day's Novena.
+                          Pray the daily intentions to each day&apos;s Novena.
                         </p>
                       </div>
                     </li>
@@ -114,7 +115,7 @@ export default function home() {
                     </li>
                   </ul>
                 </div>
-                <img
+                <Image
                   alt="Novena Progress"
                   className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
                   height="310"

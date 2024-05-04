@@ -86,7 +86,7 @@ export default function Component() {
                   <Progress value={33.33} />
                 </div>
                 {/* <p className="mt-2 text-gray-600 dark:text-gray-400">
-                  Join your fellow devotees in this Marian Novena. Your prayers
+                  Join your fellow devotees in this Rosary Challenge. Your prayers
                   make a difference!
                 </p> */}
               </div>
@@ -125,8 +125,8 @@ export default function Component() {
                 />
               </div>
               <p className="text-gray-200 text-sm dark:text-gray-400">
-                Keep up the great work! You're making steady progress in your
-                Marian devotion.
+                Keep up the great work! You&apos;re making steady progress in
+                your Marian devotion.
               </p>
             </div>
           </div>

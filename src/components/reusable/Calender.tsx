@@ -52,7 +52,6 @@ export const Calender = (props: Props) => {
             });
             setSubmitted(tempDate);
           }
-          //check if the last submission date is today and setIsExpired to true
         };
         getLast(user["email"]);
       }
@@ -91,33 +90,17 @@ export const Calender = (props: Props) => {
         head: {
           color: "white",
         },
-        day: {
-          //  color: "white",
-        },
         head_cell: {
           color: "white",
           backgroundColor: "grey",
           margin: "0.2rem",
-        },
-        cell: {
-          //  margin: "0.2rem",
         },
       }}
       modifiers={{
         marked: (currDate) => {
           let currentDate = new Date();
           if (currDate >= fromDate && currDate < currentDate) {
-            // console.log(
-            //   "currDate",
-            //   currDate,
-            //   "fromDate",
-            //   fromDate,
-            //   "currentDate",
-            //   currentDate
-            // );
-
             let resp = false;
-            //    console.log(submitted.length, "submitted");
 
             submitted.map((date) => {
               if (checkDateEquality(date, currDate)) {
@@ -132,18 +115,7 @@ export const Calender = (props: Props) => {
         missed: (currDate) => {
           let currentDate = new Date();
           if (currDate >= fromDate && currDate < currentDate) {
-            // console.log(
-            //   "currDate",
-            //   currDate,
-            //   "fromDate",
-            //   fromDate,
-            //   "currentDate",
-            //   currentDate
-            // );
-
             let resp = false;
-            //    console.log(submitted.length, "submitted");
-
             submitted.map((date) => {
               if (!checkDateEquality(date, currDate)) {
                 resp = true;

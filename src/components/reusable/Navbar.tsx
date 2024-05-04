@@ -66,10 +66,10 @@ const Navbar = (props: Props) => {
         <Link href="/" className="flex items-baseline">
           <CrossIcon className="h-4 text-red-500 w-4 " />
           <h1 className="ml-2 text-base sm:text-xl font-bold text-gray-200 dark:text-gray-200">
-            Marian Novena
+            Rosary Challenge
           </h1>
           <span className="pl-2 text-xs text-white italic">
-            By Fecamds 'O26
+            By Fecamds &apos;O26
           </span>
         </Link>
         <nav className="ml-auto text-xs ">

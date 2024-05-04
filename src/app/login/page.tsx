@@ -66,7 +66,7 @@ export default function Component() {
                 <Button className="w-full">Continue your journey</Button>
               </form>
               <div className="text-center text-xs text-gray-300 dark:text-gray-300">
-                Don't have an account?
+                Don&apos;t have an account?
                 <Link
                   className="font-medium  text-xs text-primary hover:underline"
                   href="/signup"

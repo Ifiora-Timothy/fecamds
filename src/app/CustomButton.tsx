@@ -41,18 +41,18 @@ const CustomButton = ({ isExpired }: Props) => {
 
   //set different clock icons for different times per second
   const TimerIcon = [
-    <Clock1 height={16} width={16} />,
-    <Clock2 height={16} width={16} />,
-    <Clock3 height={16} width={16} />,
-    <Clock4 height={16} width={16} />,
-    <Clock5 height={16} width={16} />,
-    <Clock6 height={16} width={16} />,
-    <Clock7 height={16} width={16} />,
-    <Clock8 height={16} width={16} />,
-    <Clock9 height={16} width={16} />,
-    <Clock10 height={16} width={16} />,
-    <Clock11 height={16} width={16} />,
-    <Clock12 height={16} width={16} />,
+    <Clock1 key={1} height={16} width={16} />,
+    <Clock2 key={2} height={16} width={16} />,
+    <Clock3 key={3} height={16} width={16} />,
+    <Clock4 key={4} height={16} width={16} />,
+    <Clock5 key={5} height={16} width={16} />,
+    <Clock6 key={6} height={16} width={16} />,
+    <Clock7 key={7} height={16} width={16} />,
+    <Clock8 key={8} height={16} width={16} />,
+    <Clock9 key={9} height={16} width={16} />,
+    <Clock10 key={10} height={16} width={16} />,
+    <Clock11 key={11} height={16} width={16} />,
+    <Clock12 key={12} height={16} width={16} />,
   ];
 
   const [timeRemaining, setTimeRemaining] = useState<number | null>(null);

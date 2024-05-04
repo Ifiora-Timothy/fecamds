@@ -8,7 +8,7 @@ const Footer = (props: Props) => {
     <footer className="bg-white py-3  bg-opacity-10   bottom-0 z-10   w-full   backdrop-blur-xl   shadow dark:bg-gray-300">
       <div className="container mx-auto  flex-col sm:flex-row items-center justify-center  sm:justify-between px-4 sm:px-16">
         <p className="text-gray-200 text-center text-xs dark:text-gray-400">
-          © 2024 Marian Novena. All rights reserved.
+          © 2024 Rosary Challenge. All rights reserved.
         </p>
         <div className="flex flex-col sm:flex-row text-xs justify-center sm:justify-center sm:gap-4 items-center space-x-4">
           <Link

@@ -45,7 +45,7 @@ export default function Component() {
       router.replace("/");
       router.refresh();
     } catch (err: any) {
-      toast.error(err);
+      toast.error("email already exist");
     }
   };
 

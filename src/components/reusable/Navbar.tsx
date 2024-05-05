@@ -20,13 +20,14 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import { Label } from "../ui/label";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import {} from "@/lib/functions/function";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useUserInfo } from "@/hooks/useUser";
 import { UserContext } from "@/context/userContext";
 import { checkIfUserExists } from "@/lib/functions/actions";
+import { cn } from "@/lib/utils";
 
 type Props = {};
 
@@ -78,7 +79,7 @@ const Navbar = (props: Props) => {
               className="font-medium hover:underline underline-offset-4 text-gray-200 dark:text-gray-300"
               href="/"
             >
-              Novena
+              Home
             </Link>
             <Link
               className="font-medium hover:underline underline-offset-4 text-gray-200 dark:text-gray-300"
@@ -122,7 +123,7 @@ const Navbar = (props: Props) => {
                         href="/"
                       >
                         <CrossIcon className="h-5 w-5" />
-                        <span>Novena</span>
+                        <span>Home</span>
                       </Link>
                       <span
                         className="h-[1px] border-white border-opacity-25 w-full border-t"

@@ -20,7 +20,14 @@ export function checkDateEquality(date1: Date, date2: Date) {
     const date2Month = date2.getMonth();
     const date2Day = date2.getDate();
     const date2Year = date2.getFullYear();
-    console.log(date1Day, date1Month, date1Year);
+    console.log(
+      date1Day,
+      date1Month,
+      date1Year,
+      date2Day,
+      date2Month,
+      date2Year
+    );
 
     return (
       date1Month === date2Month &&
@@ -76,7 +83,6 @@ export const Calender = (props: Props) => {
       </>
     );
   };
-  const [missed, setMissed] = useState<Date>(new Date(2024, 4, 2));
   return (
     <Calendar
       mode="single"
@@ -102,12 +108,12 @@ export const Calender = (props: Props) => {
           if (currDate >= fromDate && currDate < currentDate) {
             let resp = false;
 
-            submitted.map((date) => {
-              if (checkDateEquality(date, currDate)) {
-                resp = true;
-                return;
-              }
-            });
+            const dateExists = submitted.find((date) =>
+              checkDateEquality(date, currDate)
+            );
+            if (dateExists) {
+              resp = true;
+            }
             return resp;
           }
           return false;
@@ -116,12 +122,12 @@ export const Calender = (props: Props) => {
           let currentDate = new Date();
           if (currDate >= fromDate && currDate < currentDate) {
             let resp = false;
-            submitted.map((date) => {
-              if (!checkDateEquality(date, currDate)) {
-                resp = true;
-                return;
-              }
-            });
+            const dateExists = submitted.find((date) =>
+              checkDateEquality(date, currDate)
+            );
+            if (!dateExists) {
+              resp = true;
+            }
             return resp;
           }
           return false;

@@ -61,8 +61,9 @@ export const Calender = (props: Props) => {
     }
   }, [user?.email, user?.signedToday]);
 
-  const fromDate: Date = new Date(2024, 4, 1);
-  const toDate: Date = new Date(2024, 4, 30);
+  const fromDate: Date = new Date(2024, 4, 2);
+  const startDate: Date = new Date(2024, 4, 5);
+  const toDate: Date = new Date(2024, 4, 31);
   const FormatCaption: DateFormatter = (month, options) => {
     const emoji = "🌸";
 
@@ -101,8 +102,12 @@ export const Calender = (props: Props) => {
           ) {
             return true;
           }
+
           let currentDate = new Date();
           if (currDate >= fromDate && currDate < currentDate) {
+            if (currDate < startDate) {
+              return true;
+            }
             let resp = false;
 
             const dateExists = submitted.find((date) =>
@@ -118,6 +123,9 @@ export const Calender = (props: Props) => {
         missed: (currDate) => {
           let currentDate = new Date();
           if (currDate >= fromDate && currDate < currentDate) {
+            if (currDate < startDate) {
+              return false;
+            }
             let resp = false;
             const dateExists = submitted.find((date) =>
               checkDateEquality(date, currDate)

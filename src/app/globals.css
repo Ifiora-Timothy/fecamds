@@ -52,6 +52,9 @@ main{
   /* background-image: url('.'); */
 }
 
+.toastError button {
+  background-color: #3cb371 !important;
+}
 @font-face {
   font-family: "trajan";
   src: url("/fonts/TrajanProRegular.ttf") format('truetype');

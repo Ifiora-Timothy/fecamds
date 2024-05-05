@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Fecamds Rosary Challange",
   metadataBase: new URL("https://fecamds-rosary-challenge.onrender.com"),
-  description: "Join us in saying the Rpsary throughout the month of may",
+  description: "🙏Join us in saying the Rosary throughout the month of may",
   openGraph: {
     images: [
       {

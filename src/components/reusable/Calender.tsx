@@ -69,7 +69,7 @@ export const Calender = (props: Props) => {
         description: "try again later",
       });
     }
-  }, [user?.email]);
+  }, [user?.email, user?.signedToday]);
 
   const fromDate: Date = new Date(2024, 4, 1);
   const toDate: Date = new Date(2024, 4, 30);
@@ -85,6 +85,7 @@ export const Calender = (props: Props) => {
   };
   return (
     <Calendar
+      key={JSON.stringify(user)}
       mode="single"
       formatters={{ formatCaption: FormatCaption }}
       //classNames=""
@@ -104,6 +105,14 @@ export const Calender = (props: Props) => {
       }}
       modifiers={{
         marked: (currDate) => {
+          console.log(user?.signedToday, "signed today");
+
+          if (
+            currDate.getDate() === new Date().getDate() &&
+            user?.signedToday
+          ) {
+            return true;
+          }
           let currentDate = new Date();
           if (currDate >= fromDate && currDate < currentDate) {
             let resp = false;

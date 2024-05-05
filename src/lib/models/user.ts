@@ -62,6 +62,7 @@ const UserSchema = new mongoose.Schema<Users, userModel>(
 export type signUpInputs = {
   username: string;
   email: string;
+  signedToday?: boolean;
   department: "medicine" | "dentistry";
 };
 

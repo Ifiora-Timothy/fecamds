@@ -28,7 +28,7 @@ type Props = {
 
 const CustomButton = ({ isExpired }: Props) => {
   const router = useRouter();
-  const { user } = useUserInfo();
+  const { user, setUser } = useContext(UserContext);
   const calculateTimeRemaining = () => {
     const currentTime = new Date();
     const tomorrow = new Date(currentTime);
@@ -56,6 +56,7 @@ const CustomButton = ({ isExpired }: Props) => {
   ];
 
   const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -73,7 +74,7 @@ const CustomButton = ({ isExpired }: Props) => {
       .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
   const handleUpdate = () => {
-    if (isExpired) {
+    if (isExpired || isSubmitted) {
       toast.message("Your enthusiasm is truly appreciated", {
         description:
           "please remember that you can only mark your presence once a day",
@@ -81,12 +82,12 @@ const CustomButton = ({ isExpired }: Props) => {
     } else {
       try {
         updateLastSubmissionDate(user?.email!);
-        toast.success(
-          "Thank you for your dedication and commitment to the novena",
-          {
-            description: "We look forward to seeing you again tomorow",
-          }
-        );
+        toast.success("Thank you for your commitment to the the Rosary", {
+          description: "We look forward to seeing you again tomorow",
+        });
+
+        setUser({ ...user!, signedToday: true });
+        setIsSubmitted(true);
         router.refresh();
       } catch (err) {
         toast.error("something went wrong", {
@@ -97,11 +98,14 @@ const CustomButton = ({ isExpired }: Props) => {
   };
   return (
     <Button
-      aria-disabled={isExpired}
+      key={isExpired ? "expired" : "submit"}
+      aria-disabled={isExpired || isSubmitted}
       onClick={handleUpdate}
       className="rounded-lg min-w-[170px] flex items-center bg-blue-500 py-2 px-4 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
     >
-      <span className="mr-2">{isExpired ? "Come back in: " : "Submit"}</span>
+      <span className="mr-2">
+        {isExpired || isSubmitted ? "Come back in: " : "Submit"}
+      </span>
       <span
         className={clsx("flex gap-[1px] items-center ", {
           "text-red-500":

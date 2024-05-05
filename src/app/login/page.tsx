@@ -34,7 +34,14 @@ export default function Component() {
       toast.success("Logged in successfully");
       router.replace("/");
     } catch (err: any) {
-      toast.error(err);
+      toast.error("Email not found🥺.", {
+        action: {
+          label: "Sign up",
+          onClick: () => router.push(`/signup`),
+        },
+        duration: 4000,
+        className: "toastError",
+      });
     }
   };
 

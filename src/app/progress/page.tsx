@@ -18,8 +18,8 @@ export default function Component() {
     const getAll = async () => {
       if (user) {
         const resp = await getAllFields(user.email);
-        console.log(resp);
-        if (!resp) return console.log("No data");
+
+        if (!resp) return;
         setFields(JSON.parse(resp));
       }
     };

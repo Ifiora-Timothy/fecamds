@@ -30,7 +30,6 @@ export function BarChart(props: {
     return totalRosariesPerDay;
   };
   const rosariesPerDay = getTotalRosariesPrayed();
-  console.log(rosariesPerDay);
   const datas = rosariesPerDay.map((day, index) => {
     return { x: index + 1, y: day };
   });

@@ -1,11 +1,10 @@
-import { department } from "@/app/signup/page";
 import mongoose, { Model } from "mongoose";
 import validator from "validator";
 
 export interface Users extends mongoose.Document {
   username: string;
   email: string;
-  department: department;
+  department: "medicine" | "dentistry";
   daysSubmitted?: Array<Date>;
 }
 interface loginUser extends mongoose.Document {
@@ -63,7 +62,7 @@ const UserSchema = new mongoose.Schema<Users, userModel>(
 export type signUpInputs = {
   username: string;
   email: string;
-  department: department;
+  department: "medicine" | "dentistry";
 };
 
 UserSchema.statics.createUser = async function (data: signUpInputs) {

@@ -20,10 +20,7 @@ import { useUserInfo } from "@/hooks/useUser";
 import { useContext, useEffect } from "react";
 import { UserContext } from "@/context/userContext";
 import { checkIfUserExists } from "@/lib/functions/actions";
-export enum department {
-  medicine = "medicine",
-  dentistry = "dentistry",
-}
+
 const capitalizedWord = (word: string) => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
@@ -96,19 +93,13 @@ export default function Component() {
                 </div>
                 <div className="">
                   <Label htmlFor="email">Department</Label>
-                  <Select defaultValue={department.medicine} name="department">
+                  <Select defaultValue="medicine" name="department">
                     <SelectTrigger className="">
-                      <SelectValue
-                        placeholder={capitalizedWord(department.medicine)}
-                      />
+                      <SelectValue placeholder="medicine" />
                     </SelectTrigger>
                     <SelectContent className="">
-                      <SelectItem value={department.medicine}>
-                        {capitalizedWord(department.medicine)}
-                      </SelectItem>
-                      <SelectItem value={department.dentistry}>
-                        {capitalizedWord(department.dentistry)}
-                      </SelectItem>
+                      <SelectItem value="medicine">Medicine</SelectItem>
+                      <SelectItem value="dentistry">Dentistry</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

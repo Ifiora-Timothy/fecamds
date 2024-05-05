@@ -11,7 +11,7 @@ export default function Component() {
             <h2 className="text-2xl font-bold text-gray-200 dark:text-[#f8f8f8] mb-2">
               About
             </h2>
-            <div className="bg-transparent  backdrop-blur-xl text-sm dark:bg-[#262626] rounded-lg shadow-lg p-6">
+            <div className="bg-transparent backrop backdrop-blur-xl text-sm dark:bg-[#262626] rounded-lg shadow-lg p-6">
               <div
                 style={{
                   fontFamily: "trajan",

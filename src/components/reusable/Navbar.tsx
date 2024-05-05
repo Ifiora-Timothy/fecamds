@@ -64,7 +64,7 @@ const Navbar = (props: Props) => {
   return (
     <header className="bg-white  bg-opacity-10 fixed  top-0 z-10   w-full  backrop backdrop-blur-xl  py-3 shadow dark:bg-gray-800">
       <div className="container mx-auto flex items-center px-4 justify-between sm:px-10 md:px-16">
-        <Link href="/" className="flex items-baseline">
+        <Link href="/" className="flex wf items-baseline">
           <CrossIcon className="h-4 text-red-500 w-4 " />
           <h1 className="ml-2 text-base sm:text-xl font-bold text-gray-200 dark:text-gray-200">
             Rosary Challenge
@@ -119,7 +119,7 @@ const Navbar = (props: Props) => {
                   <div className="bg-white flex flex-col justify-between bg-opacity-20 h-full  py-10">
                     <div className="flex flex-col  bg-opacity-20 items-start gap-2 p-6">
                       <Link
-                        className="flex items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
+                        className="flex w-full  items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
                         href="/"
                       >
                         <CrossIcon className="h-5 w-5" />
@@ -130,18 +130,18 @@ const Navbar = (props: Props) => {
                         aria-hidden
                       />
                       <Link
-                        className="flex items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
+                        className="flex w-full  items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
                         href="/intentions"
                       >
                         <CirclePlusIcon className="h-5 w-5" />
                         <span>Intentions</span>
                       </Link>
                       <span
-                        className="h-[1px] border-white border-opacity-25 w-full border-t"
+                        className="h-[1px]  border-white border-opacity-25 w-full border-t"
                         aria-hidden
                       />
                       <Link
-                        className="flex items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
+                        className="flex  w-full  items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
                         href="/progress"
                       >
                         <ActivityIcon className="h-5 w-5" />
@@ -152,7 +152,7 @@ const Navbar = (props: Props) => {
                         aria-hidden
                       />
                       <Link
-                        className="flex items-center gap-2 text-gray-200 dark:text-[#f8f8f8] font-medium"
+                        className="flex w-full  items-center gap-2 text-gray-200 dark:text-[#f8f8f8] font-medium"
                         href="/about"
                       >
                         <InfoIcon className="h-5 w-5" />

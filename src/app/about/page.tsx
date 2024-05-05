@@ -8,10 +8,10 @@ export default function Component() {
       <main className="flex-1  dark:bg-[#1a1a1a] py-8 px-6">
         <div className="max-w-prose mt-10 mx-auto grid gap-8">
           <section>
-            <h2 className="text-2xl font-bold text-gray-200 dark:text-[#f8f8f8] mb-2">
-              About
-            </h2>
             <div className="bg-transparent backrop backdrop-blur-xl text-sm dark:bg-[#262626] rounded-lg shadow-lg p-6">
+              <h2 className="text-2xl font-bold text-gray-200 dark:text-[#f8f8f8] mb-2">
+                About
+              </h2>{" "}
               <div
                 style={{
                   fontFamily: "trajan",

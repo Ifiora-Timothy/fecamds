@@ -27,7 +27,10 @@ export default function RootLayout({
           property="og:description"
           content="Join us in saying the Rpsary throughout the month of may"
         />
-        <meta property="og:image" content="/logo.jpg" />
+        <meta
+          property="og:image"
+          content="https://fecamds-rosary-challenge.onrender.com/logo.jpg"
+        />
         <meta property="og:image:width" content="300" />
         <meta property="og:image:height" content="300" />
         <meta

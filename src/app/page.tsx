@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Footer from "@/components/reusable/Footer";
 import {
   CalendarIcon,
@@ -25,6 +25,7 @@ import { UserContext } from "@/context/userContext";
 import { toast } from "sonner";
 import { usePathname, useRouter } from "next/navigation";
 import Calender from "@/components/Calender";
+import { SunMoon } from "lucide-react";
 
 //const trajan = localFont({ src: "/font/TrajanPro.ttf" });
 
@@ -33,6 +34,18 @@ export default function Component() {
   const router = useRouter();
   const navget = usePathname();
   const { setUser } = useContext(UserContext);
+
+  const mystriesByDay: {
+    [key: number]: string;
+  } = {
+    1: "Joyful Mysteries",
+    2: "Sorrowful Mysteries",
+    3: "Glorious Mysteries",
+    4: "Luminous Mysteries",
+    5: "Joyful Mysteries",
+    6: "Sorrowful Mysteries",
+    0: "Glorious Mysteries",
+  };
 
   useEffect(() => {
     const value = localStorage.getItem("fecamdsite");
@@ -112,13 +125,29 @@ export default function Component() {
           <div className="grid grid-cols-1  gap-4 sm:grid-cols-2">
             <div className="rounded-lg flex justify-center  backdrop-blur-xl backrop bg-opacity-20 bg-white p-6 shadow dark:bg-gray-800">
               <div className="max-w-[300px]">
-                <div className="mb-11  mt-7 sm:mt-14 flex items-center justify-between">
-                  <div className="flex items-center space-x-1">
-                    <CalendarIcon className="h-4 w-4 text-gray-200 dark:text-gray-400" />
-                    <span className="text-gray-200 text-sm dark:text-gray-400">
-                      Day {currentDate.getDate()} of {totalDays}
-                    </span>
+                <div className="mb-11  mt-7 sm:mt-14 flex items-start justify-between">
+                  <div className=" flex flex-col gap-1">
+                    <div className="flex items-center space-x-1">
+                      <CalendarIcon className="h-4 w-4 text-gray-200 dark:text-gray-400" />
+                      <span className="text-gray-200 text-sm dark:text-gray-400">
+                        Day {currentDate.getDate()} of {totalDays}
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <SunMoon className="h-4 w-4 text-gray-200 dark:text-gray-400" />
+                      <span
+                        style={{
+                          fontFamily: "trajan",
+                        }}
+                        className={cn(
+                          "text-gray-300 text-xs dark:text-gray-400"
+                        )}
+                      >
+                        {mystriesByDay[currentDate.getDay()]}{" "}
+                      </span>
+                    </div>
                   </div>
+
                   <div className="flex items-center space-x-1">
                     <ClockIcon className="h-4 w-4 text-gray-200 dark:text-gray-400" />
                     <span className="text-gray-200 text-sm dark:text-gray-400">

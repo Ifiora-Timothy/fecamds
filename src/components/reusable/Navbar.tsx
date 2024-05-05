@@ -62,7 +62,7 @@ const Navbar = (props: Props) => {
     router.push("/login");
   };
   return (
-    <header className="bg-white  bg-opacity-10 fixed  top-0 z-10   w-full   backdrop-blur-xl  py-3 shadow dark:bg-gray-800">
+    <header className="bg-white  bg-opacity-10 fixed  top-0 z-10   w-full  backrop backdrop-blur-xl  py-3 shadow dark:bg-gray-800">
       <div className="container mx-auto flex items-center px-4 justify-between sm:px-10 md:px-16">
         <Link href="/" className="flex items-baseline">
           <CrossIcon className="h-4 text-red-500 w-4 " />

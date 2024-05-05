@@ -38,7 +38,7 @@ export default function Component() {
       <Navbar />
       <main className="flex-1 py-8 ">
         <div className="container mx-auto mt-10 px-4">
-          <div className="rounded-lg backdrop-blur-xl backrop bg-opacity-5 bg-slate-50 shadow-white p-6 shadow dark:bg-gray-800">
+          <div className="rounded-lg backdrop-blur-xl backrop md:mr-6 bg-opacity-5 bg-slate-50 shadow-white p-6 shadow dark:bg-gray-800">
             <h2 className="mb-2 text-2xl font-bold text-gray-200 dark:text-gray-200">
               Rosary Progress
             </h2>
@@ -83,7 +83,7 @@ export default function Component() {
                   </span>
                 </div>
                 <div className="mt-2">
-                  <Progress value={33.33} />
+                  <Progress value={fields.length / 0.9} />
                 </div>
                 {/* <p className="mt-2 text-gray-600 dark:text-gray-400">
                   Join your fellow devotees in this Rosary Challenge. Your prayers
@@ -105,7 +105,13 @@ export default function Component() {
                   </span>
                 </div>
                 <div className="mt-2">
-                  <Progress value={33.33} />
+                  <Progress
+                    value={
+                      (getTotalRosariesPrayed() / fields.length > 0
+                        ? fields.length
+                        : 1) / 0.33
+                    }
+                  />
                 </div>
                 {/* <p className="mt-2 text-gray-600 dark:text-gray-400">
                   Great job! Keep up the consistent prayer and inspire others to

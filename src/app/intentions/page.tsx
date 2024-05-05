@@ -22,12 +22,12 @@ export default function Component() {
     <div key="1" className="flex min-h-screen flex-col  dark:bg-gray-900">
       <Navbar />
       <main className="flex-1   py-8 px-6 bg-fixed">
-        <div className="max-w-4xl  bg-slate-50 bg-opacity-5 px-4 sm:px-20 py-5 shadow-white shadow rounded-lg mt-10 mx-auto grid gap-8">
+        <div className="max-w-4xl backdrop-blur-xl backrop bg-opacity-20  px-4 sm:px-20 py-5 shadow-white shadow rounded-lg mt-10 mx-auto grid gap-8">
           <section>
             <h2 className="text-2xl underline decoration-primary font-bold text-gray-200 dark:text-[#f8f8f8] mb-2">
               Daily Intentions
             </h2>
-            <div className="bg-transparent  backdrop-blur-xl backrop  dark:bg-[#262626] rounded-lg shadow-lg p-6 grid gap-4">
+            <div className="bg-transparent    rounded-lg shadow-lg p-6 grid gap-4">
               {intentions.map((intention, index) => {
                 return (
                   <>

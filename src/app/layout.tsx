@@ -35,9 +35,14 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={cn(" bg-amber-950 h-screen ", inter.className)}>
+      <body
+        className={cn(
+          " bg-amber-950 h-screen w-screen overflow-x-hidden ",
+          inter.className
+        )}
+      >
         <UserProvider>
-          <div className=" bg-[url('/largeRosary.jpg')]  overflow-x-hidden bg-yellow-950 bg-center sm:bg-cover w-screen  bg-opacity-20 pb-0  bg-scrl bg-fxed bg-cover bg-no-repeat">
+          <div className=" bg-[url('/largeRosary.jpg')]  overflow-x-hidden bg-yellow-950 bg-center sm:bg-cover w-full bg-opacity-20 pb-0  bg-scrl bg-fxed bg-cover bg-no-repeat">
             {children}
           </div>
           <Toaster duration={3000} position="top-right" richColors />

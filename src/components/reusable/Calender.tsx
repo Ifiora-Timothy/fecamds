@@ -62,7 +62,7 @@ export const Calender = (props: Props) => {
   }, [user?.email, user?.signedToday]);
 
   const fromDate: Date = new Date(2024, 4, 2);
-  const startDate: Date = new Date(2024, 4, 6);
+  const startDate: Date = new Date(2024, 4, 5);
   const toDate: Date = new Date(2024, 4, 31);
   const FormatCaption: DateFormatter = (month, options) => {
     const emoji = "🌸";
@@ -105,7 +105,7 @@ export const Calender = (props: Props) => {
 
           let currentDate = new Date();
           if (currDate >= fromDate && currDate < currentDate) {
-            if (currDate < startDate) {
+            if (currDate <= startDate) {
               return true;
             }
             let resp = false;
@@ -123,7 +123,7 @@ export const Calender = (props: Props) => {
         missed: (currDate) => {
           let currentDate = new Date();
           if (currDate >= fromDate && currDate < currentDate) {
-            if (currDate < startDate) {
+            if (currDate <= startDate) {
               return false;
             }
             let resp = false;

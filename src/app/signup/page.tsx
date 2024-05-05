@@ -45,7 +45,14 @@ export default function Component() {
       router.replace("/");
       router.refresh();
     } catch (err: any) {
-      toast.error("email already exist");
+      toast.error("email already exist.", {
+        action: {
+          label: "Log in",
+          onClick: () => router.push(`/login`),
+        },
+        duration: 4000,
+        className: "toastError",
+      });
     }
   };
 
@@ -60,8 +67,8 @@ export default function Component() {
                 <h1 className="text-2xl m-0 font-bold  text-white">
                   Create Account
                 </h1>
-                <div className="text-red-600 m-0 text-sm dark:text-gray-300">
-                  Join the Novena!!.
+                <div className="text-green-600 m-0 text-sm dark:text-gray-300">
+                  Join the Novena.
                 </div>
               </div>
               <form
@@ -111,7 +118,7 @@ export default function Component() {
               <div className="text-center text-xs text-gray-300 dark:text-gray-300">
                 Already have an account?
                 <Link
-                  className="font-medium  text-xs text-primary hover:underline"
+                  className="font-medium  text-xs text-green-300 hover:underline"
                   href="/login"
                 >
                   sign in

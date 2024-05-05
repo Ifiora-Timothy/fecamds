@@ -10,7 +10,19 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Fecamds Rosary Challange",
-  description: "From Fecamds 0'26 class",
+  metadataBase: new URL("https://fecamds-rosary-challenge.onrender.com"),
+  description: "Join us in saying the Rpsary throughout the month of may",
+  openGraph: {
+    images: [
+      {
+        url: "https://fecamds-rosary-challenge.onrender.com/logo.jpg",
+        width: 255,
+        height: 255,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -22,22 +34,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <meta property="og:title" content="Fecamds Rosary Challenge" />
-        <meta
-          property="og:description"
-          content="Join us in saying the Rpsary throughout the month of may"
-        />
-        <meta
-          property="og:image"
-          content="https://fecamds-rosary-challenge.onrender.com/logo.jpg"
-        />
-        <meta property="og:image:width" content="300" />
-        <meta property="og:image:height" content="300" />
-        <meta
-          property="og:url"
-          content="https://fecamds-rosary-challenge.onrender.com/"
-        />
-        <meta property="og:type" content="website" />
       </head>
       <body className={cn(" bg-amber-950 h-screen ", inter.className)}>
         <UserProvider>

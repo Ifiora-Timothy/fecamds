@@ -27,7 +27,7 @@ export default function Component() {
             <h2 className="text-2xl underline decoration-primary font-bold text-gray-200 dark:text-[#f8f8f8] mb-2">
               Daily Intentions
             </h2>
-            <div className="bg-transparent  backdrop-blur-xl  dark:bg-[#262626] rounded-lg shadow-lg p-6 grid gap-4">
+            <div className="bg-transparent  backdrop-blur-xl backrop  dark:bg-[#262626] rounded-lg shadow-lg p-6 grid gap-4">
               {intentions.map((intention, index) => {
                 return (
                   <>

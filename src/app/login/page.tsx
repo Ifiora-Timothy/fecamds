@@ -50,7 +50,7 @@ export default function Component() {
       <Navbar />
       <main className="flex-1 flex items-center justify-center">
         <div className=" px-10">
-          <div className="backdrop-blur-xl bg-opacity-20 p-7 py-12 sm:p-10 rounded-xl dark:bg-gray-800 flex items-center justify-center">
+          <div className="backdrop-blur-xl backrop bg-opacity-20 p-7 py-12 sm:p-10 rounded-xl dark:bg-gray-800 flex items-center justify-center">
             <div className="max-w-md min-w-[270px] w-full space-y-4 px-4 md:px-6">
               <div className="">
                 <h1 className="text-2xl m-0 font-bold  text-white">Login</h1>

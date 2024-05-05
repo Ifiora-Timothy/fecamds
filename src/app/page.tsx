@@ -110,7 +110,7 @@ export default function Component() {
       <main className="flex-1 flex mt-auto mb-[100px] py-8 ">
         <div className="container mt-[10vh] mx-auto min-[440px]:px-16 px-8 sm:px-10 md:px-20 min-[870px]:px-32  lg:px-52">
           <div className="grid grid-cols-1  gap-4 sm:grid-cols-2">
-            <div className="rounded-lg flex justify-center  backdrop-blur-xl bg-opacity-20 bg-white p-6 shadow dark:bg-gray-800">
+            <div className="rounded-lg flex justify-center  backdrop-blur-xl backrop bg-opacity-20 bg-white p-6 shadow dark:bg-gray-800">
               <div className="max-w-[300px]">
                 <div className="mb-11  mt-7 sm:mt-14 flex items-center justify-between">
                   <div className="flex items-center space-x-1">

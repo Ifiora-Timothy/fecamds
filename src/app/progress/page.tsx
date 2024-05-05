@@ -38,12 +38,12 @@ export default function Component() {
       <Navbar />
       <main className="flex-1 py-8 ">
         <div className="container mx-auto mt-10 px-4">
-          <div className="rounded-lg backdrop-blu-xl bg-opacity-5 bg-slate-50 shadow-white p-6 shadow dark:bg-gray-800">
+          <div className="rounded-lg backdrop-blur-xl backrop bg-opacity-5 bg-slate-50 shadow-white p-6 shadow dark:bg-gray-800">
             <h2 className="mb-2 text-2xl font-bold text-gray-200 dark:text-gray-200">
               Rosary Progress
             </h2>
             <div className="grid grid-cols-1   gap-4 md:grid-cols-2 lg:grid-cols-3">
-              <div className="rounded-lg  backdrop-blur-xl bg-transparent shadow-gray-200 shadow  p-4 dark:bg-gray-800">
+              <div className="rounded-lg  backdrop-blur-xl backrop bg-transparent shadow-gray-200 shadow  p-4 dark:bg-gray-800">
                 <div className=" flex items-center justify-between">
                   <h3 className="mb-2 p-0 text-base font-bold text-gray-200 dark:text-gray-200">
                     Total Rosaries Prayed
@@ -70,7 +70,7 @@ export default function Component() {
                   Marian devotion.
                 </p> */}
               </div>
-              <div className="rounded-lg  backdrop-blur-xl bg-transparent shadow-gray-200 shadow p-4 dark:bg-gray-800">
+              <div className="rounded-lg  backdrop-blur-xl backrop bg-transparent shadow-gray-200 shadow p-4 dark:bg-gray-800">
                 <div className=" flex items-center justify-between">
                   <h3 className="mb-2 p-0 text-base font-bold text-gray-200 dark:text-gray-200">
                     Participants
@@ -90,7 +90,7 @@ export default function Component() {
                   make a difference!
                 </p> */}
               </div>
-              <div className="rounded-lg  backdrop-blur-xl bg-transparent shadow-gray-200 shadow p-4 dark:bg-gray-800">
+              <div className="rounded-lg  backdrop-blur-xl backrop bg-transparent shadow-gray-200 shadow p-4 dark:bg-gray-800">
                 <div className=" flex items-center justify-between">
                   <h3 className="mb-2 p-0 text-base font-bold text-gray-200 dark:text-gray-200">
                     Average Rosaries Prayed
@@ -113,7 +113,7 @@ export default function Component() {
                 </p> */}
               </div>
             </div>
-            <div className="rounded-lg  backdrop-blur-xl mt-3 bg-transparent shadow-gray-200 shadow p-4 dark:bg-gray-800">
+            <div className="rounded-lg  backdrop-blur-xl backrop mt-3 bg-transparent shadow-gray-200 shadow p-4 dark:bg-gray-800">
               <h3 className="mb-2 text-xl font-bold text-gray-200 dark:text-gray-200">
                 Rosaries by Day
               </h3>

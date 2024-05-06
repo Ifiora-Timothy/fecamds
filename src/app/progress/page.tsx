@@ -55,7 +55,7 @@ export default function Component() {
                     {getTotalRosariesPrayed()}
                   </span>
                   <span className="text-gray-100 dark:text-gray-400">
-                    out of {fields?.length * 30}
+                    out of {fields?.length * 24}
                   </span>
                 </div>
                 <div className="mt-2">
@@ -100,7 +100,7 @@ export default function Component() {
                 <div className="flex items-center justify-between">
                   <span className="text-3xl font-bold text-gray-200 dark:text-gray-200">
                     {getTotalRosariesPrayed() / fields.length > 0
-                      ? fields.length
+                      ? getTotalRosariesPrayed() / fields.length
                       : 1}
                   </span>
                 </div>
@@ -108,8 +108,8 @@ export default function Component() {
                   <Progress
                     value={
                       (getTotalRosariesPrayed() / fields.length > 0
-                        ? fields.length
-                        : 1) / 0.33
+                        ? getTotalRosariesPrayed() / fields.length
+                        : 1) / 0.24
                     }
                   />
                 </div>

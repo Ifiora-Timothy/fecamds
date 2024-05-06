@@ -68,11 +68,11 @@ export default function Component() {
   const [isExpired, setIsExpired] = useState(false);
 
   const fromDate: Date = new Date(2024, 4, 1);
-  const toDate: Date = new Date(2024, 4, 30);
+  const toDate: Date = new Date(2024, 4, 31);
 
   const totalDays = toDate.getDate();
   const currentDate = new Date();
-  const remDays = totalDays - currentDate.getDate();
+  const remDays = totalDays - currentDate.getDate() + 1;
 
   useEffect(() => {
     try {
@@ -130,7 +130,7 @@ export default function Component() {
                     <div className="flex items-center space-x-1">
                       <CalendarIcon className="h-4 w-4 text-gray-200 dark:text-gray-400" />
                       <span className="text-gray-200 text-sm dark:text-gray-400">
-                        Day {currentDate.getDate()} of {totalDays}
+                        Day {currentDate.getDate() - 1} of {totalDays - 1}
                       </span>
                     </div>
                     <div className="flex items-center space-x-1">
@@ -151,7 +151,7 @@ export default function Component() {
                   <div className="flex items-center space-x-1">
                     <ClockIcon className="h-4 w-4 text-gray-200 dark:text-gray-400" />
                     <span className="text-gray-200 text-sm dark:text-gray-400">
-                      {remDays} days left
+                      {remDays - 1} days left
                     </span>
                   </div>
                 </div>

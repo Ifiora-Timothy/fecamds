@@ -102,7 +102,7 @@ export default function Component() {
                     {Math.floor(
                       getTotalRosariesPrayed() / fields.length > 0
                         ? getTotalRosariesPrayed() / fields.length
-                        : 1
+                        : 0
                     )}
                   </span>
                 </div>

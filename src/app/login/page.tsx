@@ -31,7 +31,9 @@ export default function Component() {
         value: JSON.stringify(resp),
       });
       setUser(resp);
-      toast.success("Logged in successfully");
+      toast.success("Logged in successfully", {
+        description: `thank you for joining us`,
+      });
       router.replace("/");
     } catch (err: any) {
       toast.error("Email not found🥺.", {

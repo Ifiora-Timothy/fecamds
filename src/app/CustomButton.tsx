@@ -75,22 +75,33 @@ const CustomButton = ({ isExpired }: Props) => {
   };
   const handleUpdate = () => {
     if (isExpired || isSubmitted) {
-      toast.message("Your enthusiasm is truly appreciated", {
+      toast.message("Your enthusiasm is truly appreciated" + user?.username, {
         description:
           "please remember that you can only mark your presence once a day",
       });
     } else {
       try {
+        console.log(new Date(), new Date(2024, 4, 6));
+
+        if (new Date() < new Date(2024, 4, 7)) {
+          toast.message("Welcome to the challenge " + user?.username, {
+            description: "Sorrry, submission starts tomorrow",
+          });
+          return;
+        }
         updateLastSubmissionDate(user?.email!);
-        toast.success("Thank you for your commitment to the the Rosary", {
-          description: "We look forward to seeing you again tomorow",
-        });
+        toast.success(
+          `Thank you ${user?.username} for your commitment to the the Rosary`,
+          {
+            description: "We look forward to seeing you again tomorow",
+          }
+        );
 
         setUser({ ...user!, signedToday: true });
         setIsSubmitted(true);
         router.refresh();
       } catch (err) {
-        toast.error("something went wrong", {
+        toast.error(`something went wrong`, {
           description: "try again later",
         });
       }

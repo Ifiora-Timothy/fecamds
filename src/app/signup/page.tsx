@@ -41,7 +41,10 @@ export default function Component() {
         value: JSON.stringify({ username, email, department }),
       });
       setUser({ username, email, department });
-      toast.success("Account successfully created");
+      toast.success("Account successfully created", {
+        description: `${username}, you are welcome to the challenge`,
+        duration: 2000,
+      });
       router.replace("/");
       router.refresh();
     } catch (err: any) {

@@ -26,6 +26,21 @@ export default function Component() {
     getAll();
   }, [user]);
 
+  const getTodaysRosariesPrayed = (): number => {
+    const today = new Date().getDate();
+    const todaysMonth = new Date().getMonth();
+    let total = 0;
+    fields.forEach((field) => {
+      field.daysSubmitted.forEach((day: Date) => {
+        const date = new Date(day);
+        if (date.getDate() === today && date.getMonth() === todaysMonth) {
+          total++;
+        }
+      });
+    });
+    return total;
+  };
+
   const getTotalRosariesPrayed = (): number => {
     let total = 0;
     fields.forEach((field) => {
@@ -81,6 +96,9 @@ export default function Component() {
                   <span className="text-3xl font-bold text-gray-200 dark:text-gray-200">
                     {fields.length}
                   </span>
+                  <span className="text-gray-100 dark:text-gray-400">
+                    out of 90
+                  </span>
                 </div>
                 <div className="mt-2">
                   <Progress value={fields.length / 0.9} />
@@ -93,27 +111,20 @@ export default function Component() {
               <div className="rounded-lg  backdrop-blur-xl backrop bg-transparent shadow-gray-200 shadow p-4 dark:bg-gray-800">
                 <div className=" flex items-center justify-between">
                   <h3 className="mb-2 p-0 text-base font-bold text-gray-200 dark:text-gray-200">
-                    Average Rosaries Prayed
+                    Rosaries Prayed Today
                   </h3>{" "}
                   <HelpingHand className="text-white" />{" "}
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-3xl font-bold text-gray-200 dark:text-gray-200">
-                    {Math.floor(
-                      getTotalRosariesPrayed() / fields.length > 0
-                        ? getTotalRosariesPrayed() / fields.length
-                        : 0
-                    )}
+                    {getTodaysRosariesPrayed()}
+                  </span>
+                  <span className="text-gray-100 dark:text-gray-400">
+                    out of {fields?.length}
                   </span>
                 </div>
                 <div className="mt-2">
-                  <Progress
-                    value={
-                      (getTotalRosariesPrayed() / fields.length > 0
-                        ? getTotalRosariesPrayed() / fields.length
-                        : 1) / 0.24
-                    }
-                  />
+                  <Progress value={getTodaysRosariesPrayed() / fields.length} />
                 </div>
                 {/* <p className="mt-2 text-gray-600 dark:text-gray-400">
                   Great job! Keep up the consistent prayer and inspire others to

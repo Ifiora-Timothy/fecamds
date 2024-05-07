@@ -22,6 +22,17 @@ import clsx from "clsx";
 import { UserContext } from "@/context/userContext";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 type Props = {
   isExpired: boolean;
 };
@@ -108,33 +119,88 @@ const CustomButton = ({ isExpired }: Props) => {
     }
   };
   return (
-    <Button
-      key={isExpired ? "expired" : "submit"}
-      aria-disabled={isExpired || isSubmitted}
-      onClick={handleUpdate}
-      className="rounded-lg min-w-[170px] flex items-center bg-blue-500 py-2 px-4 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
-    >
-      <span className="mr-2">
-        {isExpired || isSubmitted ? "Come back in: " : "Submit"}
-      </span>
-      <span
-        className={clsx("flex gap-[1px] items-center ", {
-          "text-red-500":
-            !isExpired &&
-            timeRemaining &&
-            Math.round(timeRemaining / (1000 * 60 * 60)) < 1,
-          "text-green-200":
-            isExpired ||
-            (timeRemaining &&
-              Math.round(timeRemaining / (1000 * 60 * 60)) >= 1),
-        })}
-      >
-        {timeRemaining
-          ? TimerIcon[Math.round(timeRemaining / 1000) % 12]
-          : TimerIcon[0]}{" "}
-        {timeRemaining && formatTime(timeRemaining)}
-      </span>
-    </Button>
+    <>
+      {isExpired || isSubmitted ? (
+        <Button
+          key={isExpired ? "expired" : "submit"}
+          aria-disabled={isExpired || isSubmitted}
+          onClick={handleUpdate}
+          className="rounded-lg min-w-[170px] flex items-center bg-blue-500 py-2 px-4 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
+        >
+          <span className="mr-2">
+            {isExpired || isSubmitted ? "Come back in: " : "Submit"}
+          </span>
+          <span
+            className={clsx("flex gap-[1px] items-center ", {
+              "text-red-500":
+                !isExpired &&
+                timeRemaining &&
+                Math.round(timeRemaining / (1000 * 60 * 60)) < 1,
+              "text-green-200":
+                isExpired ||
+                (timeRemaining &&
+                  Math.round(timeRemaining / (1000 * 60 * 60)) >= 1),
+            })}
+          >
+            {timeRemaining
+              ? TimerIcon[Math.round(timeRemaining / 1000) % 12]
+              : TimerIcon[0]}{" "}
+            {timeRemaining && formatTime(timeRemaining)}
+          </span>
+        </Button>
+      ) : (
+        <AlertDialog>
+          <AlertDialogTrigger
+            key={isExpired ? "expired" : "submit"}
+            aria-disabled={isExpired || isSubmitted}
+          >
+            <div className="rounded-lg min-w-[170px] flex items-center bg-blue-500 py-2 px-4 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700">
+              <span className="mr-2">
+                {isExpired || isSubmitted ? "Come back in: " : "Submit"}
+              </span>
+              <span
+                className={clsx("flex gap-[1px] items-center ", {
+                  "text-red-500":
+                    !isExpired &&
+                    timeRemaining &&
+                    Math.round(timeRemaining / (1000 * 60 * 60)) < 1,
+                  "text-green-200":
+                    isExpired ||
+                    (timeRemaining &&
+                      Math.round(timeRemaining / (1000 * 60 * 60)) >= 1),
+                })}
+              >
+                {timeRemaining
+                  ? TimerIcon[Math.round(timeRemaining / 1000) % 12]
+                  : TimerIcon[0]}{" "}
+                {timeRemaining && formatTime(timeRemaining)}
+              </span>
+            </div>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>
+                Have you said your Rosary Today?
+              </AlertDialogTitle>
+              <AlertDialogDescription>
+                If no please click go back, and come back when you have.😊
+                {/*add a smiley emoji  */}
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                key={isExpired ? "expired" : "submit"}
+                aria-disabled={isExpired || isSubmitted}
+                onClick={handleUpdate}
+              >
+                Yes
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      )}
+    </>
   );
 };
 

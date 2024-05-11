@@ -36,6 +36,7 @@ export const checkIfUserExists = async (email: string) => {
     const userExists = await user.findOne({
       email,
     });
+
     return userExists ? true : false;
   } catch (err) {
     return false;
@@ -47,6 +48,6 @@ export const getAllFields = async (email: string) => {
     const details = await user.find({}, "daysSubmitted");
     return JSON.stringify(details);
   } catch (err) {
-    return false;
+    return null;
   }
 };

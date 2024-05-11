@@ -19,14 +19,11 @@ export function checkDateEquality(date1: Date, date2: Date) {
   }
 }
 
-const date1 = new Date("2021-09-01");
+const date1 = new Date("2024-05-06");
 const dateArray = [
   new Date("2021-09-01"),
   new Date("2021-09-02"),
   new Date("2021-09-03"),
 ];
 
-dateArray.map((date) => {
-  const iss = checkDateEquality(date1, date);
-  iss;
-});
+console.log(date1);

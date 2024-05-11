@@ -1,40 +1,21 @@
 "use client";
-import Link from "next/link";
-import { Button, buttonVariants } from "@/components/ui/button";
 import Footer from "@/components/reusable/Footer";
-import {
-  CalendarIcon,
-  ClockIcon,
-  CrossIcon,
-} from "@/components/reusable/icons";
+import { CalendarIcon, ClockIcon } from "@/components/reusable/icons";
 import Navbar, { exclude } from "@/components/reusable/Navbar";
-import { format } from "date-fns";
-import { DateFormatter } from "react-day-picker";
-
 import { cn } from "@/lib/utils";
 import { useUserInfo } from "@/hooks/useUser";
-import {
-  checkIfUserExists,
-  getLastSubmissionDate,
-  updateLastSubmissionDate,
-} from "@/lib/functions/actions";
 import { intentions } from "@/data";
-import { use, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CustomButton from "./CustomButton";
 import { UserContext } from "@/context/userContext";
-import { toast } from "sonner";
 import { usePathname, useRouter } from "next/navigation";
-import Calender from "@/components/Calender";
 import { SunMoon } from "lucide-react";
+import CalenderUI from "@/components/reusable/Calender";
 
 //const trajan = localFont({ src: "/font/TrajanPro.ttf" });
 
 export default function Component() {
-  const { user } = useUserInfo();
-  const router = useRouter();
-  const navget = usePathname();
-  const { setUser } = useContext(UserContext);
-
+  const { submitted, isExpired } = useUserInfo();
   const mystriesByDay: {
     [key: number]: string;
   } = {
@@ -47,73 +28,12 @@ export default function Component() {
     0: "Glorious Mysteries",
   };
 
-  useEffect(() => {
-    const value = localStorage.getItem("fecamdsite");
-    if (value) {
-      setUser(JSON.parse(value));
-
-      checkIfUserExists(JSON.parse(value).email).then((res) => {
-        if (!res) {
-          if (!exclude.includes(navget)) {
-            router.push("/signup");
-          }
-        }
-      });
-    } else {
-      if (!exclude.includes(navget)) {
-        router.push("/signup");
-      }
-    }
-  }, []);
-  const [isExpired, setIsExpired] = useState(false);
-
   const fromDate: Date = new Date(2024, 4, 1);
   const toDate: Date = new Date(2024, 4, 31);
 
   const totalDays = toDate.getDate();
   const currentDate = new Date();
   const remDays = totalDays - currentDate.getDate() + 1;
-
-  useEffect(() => {
-    try {
-      if (user) {
-        const getLast = async (email: string) => {
-          const lastSubmision = await getLastSubmissionDate(email);
-          if (!lastSubmision) return;
-          const res = JSON.parse(lastSubmision);
-          if (res instanceof Error) {
-            toast("please sign in to continue", {
-              description: "an error occured",
-              action: {
-                label: "Sign In",
-                onClick: () => {
-                  router.push("/login");
-                },
-              },
-            });
-          } else {
-            const lastSubDate = new Date(res[res.length - 1]);
-            if (
-              lastSubDate.getDate() === currentDate.getDate() &&
-              lastSubDate.getMonth() === currentDate.getMonth() &&
-              lastSubDate.getFullYear() === currentDate.getFullYear()
-            ) {
-              setIsExpired(true);
-            }
-          }
-          //check if the last submission date is today and setIsExpired to true
-        };
-        getLast(user["email"]);
-      }
-    } catch (err) {
-      console.log(err, "error");
-
-      toast.error("something went wrong", {
-        description: "try again later",
-      });
-    }
-  }, [user?.email]);
-  //
 
   //create a countdown timer
   //await getLastSubmissionDate;
@@ -176,7 +96,8 @@ export default function Component() {
                 </div>
               </div>
             </div>
-            <Calender />
+
+            <CalenderUI key={submitted.length} submitted={submitted} />
           </div>
         </div>
       </main>

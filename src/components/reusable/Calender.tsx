@@ -7,7 +7,9 @@ import { useUserInfo } from "@/hooks/useUser";
 import { getLastSubmissionDate } from "@/lib/functions/actions";
 import { toast } from "sonner";
 
-type Props = {};
+type Props = {
+  submitted: Date[];
+};
 
 export function checkDateEquality(date1: Date, date2: Date) {
   typeof date1;
@@ -29,38 +31,8 @@ export function checkDateEquality(date1: Date, date2: Date) {
     return false;
   }
 }
-export const Calender = (props: Props) => {
-  const [submitted, setSubmitted] = useState<Array<Date>>([]);
+export const Calender = ({ submitted }: Props) => {
   const { user } = useUserInfo();
-  //get the dates fom database
-  useEffect(() => {
-    try {
-      if (user) {
-        const getLast = async (email: string) => {
-          const lastSubmision = await getLastSubmissionDate(email);
-          if (!lastSubmision) return;
-          const res = JSON.parse(lastSubmision);
-          if (res instanceof Error) {
-            console.error(res.message);
-          } else {
-            const tempDate: Array<Date> = [];
-            res.map((date: string) => {
-              tempDate.push(new Date(date));
-            });
-            setSubmitted(tempDate);
-          }
-        };
-        getLast(user["email"]);
-      }
-    } catch (err) {
-      console.log(err, "error");
-
-      toast.error("something went wrong", {
-        description: "try again later",
-      });
-    }
-  }, [user?.email, user?.signedToday]);
-
   const fromDate: Date = new Date(2024, 4, 2);
   const startDate: Date = new Date(2024, 4, 6);
   const toDate: Date = new Date(2024, 4, 31);
@@ -75,91 +47,93 @@ export const Calender = (props: Props) => {
     );
   };
   return (
-    <Calendar
-      key={JSON.stringify(user)}
-      mode="single"
-      formatters={{ formatCaption: FormatCaption }}
-      //classNames=""
-      classNames={{
-        cell: "m-[1px] min-[420px]:m-[0.2rem] ",
-        day: "hover:bg-white hover:text-black my-[0.1rem] mx-0 text-sm px-4 flex items-center justify-center py-1 w-[26px] rounded",
-      }}
-      styles={{
-        head: {
-          color: "white",
-        },
-        head_cell: {
-          color: "white",
-          backgroundColor: "grey",
-          margin: "0.2rem",
-        },
-      }}
-      modifiers={{
-        marked: (currDate) => {
-          if (
-            currDate.getDate() === new Date().getDate() &&
-            user?.signedToday
-          ) {
-            return true;
-          }
-
-          let currentDate = new Date();
-          if (currDate >= fromDate && currDate < currentDate) {
-            if (currDate <= startDate) {
+    <div className="rounded-lg backdrop-blur-xl backrop bg-opacity-20 bg-white p-6 flex items-center justify-center flex-col shadow dark:bg-gray-800">
+      <Calendar
+        key={JSON.stringify(user)}
+        mode="single"
+        formatters={{ formatCaption: FormatCaption }}
+        //classNames=""
+        classNames={{
+          cell: "m-[1px] min-[420px]:m-[0.2rem] ",
+          day: "hover:bg-white hover:text-black my-[0.1rem] mx-0 text-sm px-4 flex items-center justify-center py-1 w-[26px] rounded",
+        }}
+        styles={{
+          head: {
+            color: "white",
+          },
+          head_cell: {
+            color: "white",
+            backgroundColor: "grey",
+            margin: "0.2rem",
+          },
+        }}
+        modifiers={{
+          marked: (currDate) => {
+            if (
+              currDate.getDate() === new Date().getDate() &&
+              user?.signedToday
+            ) {
               return true;
             }
-            let resp = false;
 
-            const dateExists = submitted.find((date) =>
-              checkDateEquality(date, currDate)
-            );
-            if (dateExists) {
-              resp = true;
-            }
-            return resp;
-          }
-          return false;
-        },
-        missed: (currDate) => {
-          let currentDate = new Date();
-          if (currDate >= fromDate && currDate < currentDate) {
-            if (currDate <= startDate) {
-              return false;
-            }
-            let resp = false;
-            const dateExists = submitted.find((date) =>
-              checkDateEquality(date, currDate)
-            );
-            if (!dateExists) {
-              resp = true;
-            }
-            return resp;
-          }
-          return false;
-        },
-      }}
-      modifiersStyles={{
-        today: {
-          color: "white",
-          backgroundColor: "black",
-        },
+            let currentDate = new Date();
+            if (currDate >= fromDate && currDate < currentDate) {
+              if (currDate <= startDate) {
+                return true;
+              }
+              let resp = false;
 
-        disabled: {
-          color: "#ccc",
-        },
-        marked: {
-          color: "white",
-          backgroundColor: "green",
-        },
-        missed: {
-          color: "white",
-          backgroundColor: "orangered",
-        },
-      }}
-      fromDate={fromDate}
-      toDate={toDate}
-      className="p-4 text-white"
-    />
+              const dateExists = submitted.find((date) =>
+                checkDateEquality(date, currDate)
+              );
+              if (dateExists) {
+                resp = true;
+              }
+              return resp;
+            }
+            return false;
+          },
+          missed: (currDate) => {
+            let currentDate = new Date();
+            if (currDate >= fromDate && currDate < currentDate) {
+              if (currDate <= startDate) {
+                return false;
+              }
+              let resp = false;
+              const dateExists = submitted.find((date) =>
+                checkDateEquality(date, currDate)
+              );
+              if (!dateExists) {
+                resp = true;
+              }
+              return resp;
+            }
+            return false;
+          },
+        }}
+        modifiersStyles={{
+          today: {
+            color: "white",
+            backgroundColor: "black",
+          },
+
+          disabled: {
+            color: "#ccc",
+          },
+          marked: {
+            color: "white",
+            backgroundColor: "green",
+          },
+          missed: {
+            color: "white",
+            backgroundColor: "orangered",
+          },
+        }}
+        fromDate={fromDate}
+        toDate={toDate}
+        className="p-4 text-white"
+      />
+    </div>
   );
 };
 

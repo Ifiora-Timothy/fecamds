@@ -21,13 +21,18 @@ import {
 } from "../ui/sheet";
 import { Label } from "../ui/label";
 import { Button, buttonVariants } from "../ui/button";
-import {} from "@/lib/functions/function";
+import { addToLocalStrorage } from "@/lib/functions/function";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useUserInfo } from "@/hooks/useUser";
 import { UserContext } from "@/context/userContext";
-import { checkIfUserExists } from "@/lib/functions/actions";
+import {
+  checkIfUserExists,
+  getAllFields,
+  getLastSubmissionDate,
+} from "@/lib/functions/actions";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 type Props = {};
 
@@ -35,17 +40,74 @@ export const exclude = ["/login", "/signup"];
 const Navbar = (props: Props) => {
   const router = useRouter();
   const navget = usePathname();
-  const { setUser, user } = useContext(UserContext);
-
+  const { user, isExpired } = useUserInfo();
+  const { setUser, setIsExpired, setFields, setSubmitted } =
+    useContext(UserContext);
+  const currentDate = new Date();
   useEffect(() => {
     const value = localStorage.getItem("fecamdsite");
+
     if (value) {
       setUser(JSON.parse(value));
+
       checkIfUserExists(JSON.parse(value).email).then((res) => {
         if (!res) {
           if (!exclude.includes(navget)) {
             router.push("/signup");
             router.refresh();
+          }
+        } else {
+          const user = JSON.parse(value);
+          try {
+            const getLast = async (email: string) => {
+              const lastSubmisionPromise = await getLastSubmissionDate(email);
+              const respPromise = await getAllFields(user.email);
+              const [resp, lastSubmision] = await Promise.all([
+                respPromise,
+                lastSubmisionPromise,
+              ]);
+              if (!resp) return;
+              setFields(JSON.parse(resp));
+              if (!lastSubmision) return;
+              const res = JSON.parse(lastSubmision);
+              if (res instanceof Error) {
+                toast("please sign in to continue", {
+                  description: "an error occured",
+                  action: {
+                    label: "Sign In",
+                    onClick: () => {
+                      router.push("/login");
+                    },
+                  },
+                });
+              } else {
+                const lastSubDate = new Date(res[res.length - 1]);
+                const tempDate: Array<Date> = [];
+                res.map((date: string) => {
+                  tempDate.push(new Date(date));
+                });
+                addToLocalStrorage({
+                  key: "prevDate",
+                  value: JSON.stringify(tempDate),
+                });
+                setSubmitted(tempDate);
+                if (
+                  lastSubDate.getDate() === currentDate.getDate() &&
+                  lastSubDate.getMonth() === currentDate.getMonth() &&
+                  lastSubDate.getFullYear() === currentDate.getFullYear()
+                ) {
+                  setIsExpired(true);
+                }
+              }
+              //check if the last submission date is today and setIsExpired to true
+            };
+            getLast(user.email);
+          } catch (err) {
+            console.log(err, "error");
+
+            toast.error("something went wrong", {
+              description: "try again later",
+            });
           }
         }
       });

@@ -1,30 +1,17 @@
 "use client";
-
-import Link from "next/link";
 import { Progress } from "@/components/ui/progress";
-import { CrossIcon } from "@/components/reusable/icons";
 import Navbar from "@/components/reusable/Navbar";
 import Footer from "@/components/reusable/Footer";
 import { BarChart } from "@/components/reusable/charts";
 import { HeartHandshake, HelpingHand, Users } from "lucide-react";
 import { useUserInfo } from "@/hooks/useUser";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAllFields } from "@/lib/functions/actions";
+import { UserContext } from "@/context/userContext";
 
 export default function Component() {
-  const { user } = useUserInfo();
-  const [fields, setFields] = useState<any[]>([]);
-  useEffect(() => {
-    const getAll = async () => {
-      if (user) {
-        const resp = await getAllFields(user.email);
-
-        if (!resp) return;
-        setFields(JSON.parse(resp));
-      }
-    };
-    getAll();
-  }, [user]);
+  const { user, fields } = useUserInfo();
+  const { setFields } = useContext(UserContext);
 
   const getTodaysRosariesPrayed = (): number => {
     const today = new Date().getDate();

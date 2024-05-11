@@ -33,18 +33,19 @@ import {
 } from "@/lib/functions/actions";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
-
 type Props = {};
 
 export const exclude = ["/login", "/signup"];
 const Navbar = (props: Props) => {
   const router = useRouter();
   const navget = usePathname();
-  const { user, isExpired } = useUserInfo();
+  const { user, isExpired, submitted } = useUserInfo();
   const { setUser, setIsExpired, setFields, setSubmitted } =
     useContext(UserContext);
   const currentDate = new Date();
+
   useEffect(() => {
+    setSubmitted(submitted);
     const value = localStorage.getItem("fecamdsite");
 
     if (value) {
@@ -82,15 +83,20 @@ const Navbar = (props: Props) => {
                 });
               } else {
                 const lastSubDate = new Date(res[res.length - 1]);
-                const tempDate: Array<Date> = [];
-                res.map((date: string) => {
-                  tempDate.push(new Date(date));
-                });
+                setSubmitted(
+                  res.map((date: string) => {
+                    return new Date(date);
+                  })
+                );
                 addToLocalStrorage({
                   key: "prevDate",
-                  value: JSON.stringify(tempDate),
+                  value: JSON.stringify(
+                    res.map((date: string) => {
+                      return new Date(date);
+                    })
+                  ),
                 });
-                setSubmitted(tempDate);
+
                 if (
                   lastSubDate.getDate() === currentDate.getDate() &&
                   lastSubDate.getMonth() === currentDate.getMonth() &&

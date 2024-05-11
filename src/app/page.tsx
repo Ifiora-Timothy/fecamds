@@ -15,7 +15,7 @@ import CalenderUI from "@/components/reusable/Calender";
 //const trajan = localFont({ src: "/font/TrajanPro.ttf" });
 
 export default function Component() {
-  const { submitted, isExpired } = useUserInfo();
+  const { submitted, isExpired, user } = useUserInfo();
   const mystriesByDay: {
     [key: number]: string;
   } = {
@@ -97,7 +97,7 @@ export default function Component() {
               </div>
             </div>
 
-            <CalenderUI key={submitted.length} submitted={submitted} />
+            <CalenderUI key={JSON.stringify(user)} submitted={submitted} />
           </div>
         </div>
       </main>

@@ -29,10 +29,15 @@ export function UserProvider({ children }: PropsWithChildren) {
   const [submitted, setSubmitted] = useState<Array<Date>>(() => {
     if (typeof window != "undefined") {
       const storedData = localStorage.getItem("prevDate");
-      return storedData ? JSON.parse(storedData) : [];
+      return storedData
+        ? JSON.parse(storedData).map((date: string) => {
+            return new Date(date);
+          })
+        : [];
     }
     return [];
   });
+
   const [fields, setFields] = useState<any[]>([]);
 
   return (

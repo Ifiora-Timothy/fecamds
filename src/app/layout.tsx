@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import { cn } from "@/lib/utils";
 import { redirect } from "next/navigation";
 import { UserProvider } from "@/context/userContext";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,7 +43,8 @@ export default function RootLayout({
         )}
       >
         <UserProvider>
-          <div className=" bg-[url('/largeRosary.jpg')]  overflow-x-hidden bg-yellow-950 bg-center sm:bg-cover w-full bg-opacity-20 pb-0  bg-scrl bg-fxed bg-cover bg-no-repeat">
+          <div className="relative  overflow-x-hidden bg-yellow-950 bg-center sm:bg-cover w-full bg-opacity-20 pb-0  bg-scrl bg-fxed bg-cover bg-no-repeat">
+            <Image src="/largeRosary.jpg" alt="heroImage" fill priority />
             {children}
           </div>
           <Toaster duration={3000} position="top-right" richColors />

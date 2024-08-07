@@ -45,6 +45,7 @@ export const checkIfUserExists = async (email: string) => {
 
 export const getAllFields = async (email: string) => {
   try {
+    await dbConnect();
     const details = await user.find({}, "daysSubmitted");
     return JSON.stringify(details);
   } catch (err) {

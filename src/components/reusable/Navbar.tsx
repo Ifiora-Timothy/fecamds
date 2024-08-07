@@ -179,53 +179,61 @@ const Navbar = (props: Props) => {
           </div>
           <div className="block   sm:hidden">
             <Sheet>
-              <SheetTrigger className="text-white" asChild>
+              <SheetTrigger className="text-white">
                 <AlignRight />
               </SheetTrigger>
               <SheetOverlay className="max-w-[200px] text-white">
                 <SheetContent className="bg-[url('/largeRosary.jpg')] text-white bg-fixed  m-0 p-0  h-full  bg-cover bg-no-repeat max-w-[300px]">
                   <div className="bg-white flex flex-col justify-between bg-opacity-20 h-full  py-10">
                     <div className="flex flex-col  bg-opacity-20 items-start gap-2 p-6">
-                      <Link
-                        className="flex w-full  items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
-                        href="/"
-                      >
-                        <CrossIcon className="h-5 w-5" />
-                        <span>Home</span>
-                      </Link>
+                      <SheetClose asChild>
+                        <Link
+                          className="flex w-full  items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
+                          href="/"
+                        >
+                          <CrossIcon className="h-5 w-5" />
+                          <span>Home</span>
+                        </Link>
+                      </SheetClose>
                       <span
                         className="h-[1px] border-white border-opacity-25 w-full border-t"
                         aria-hidden
                       />
-                      <Link
-                        className="flex w-full  items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
-                        href="/intentions"
-                      >
-                        <CirclePlusIcon className="h-5 w-5" />
-                        <span>Intentions</span>
-                      </Link>
+                      <SheetClose asChild>
+                        <Link
+                          className="flex w-full  items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
+                          href="/intentions"
+                        >
+                          <CirclePlusIcon className="h-5 w-5" />
+                          <span>Intentions</span>
+                        </Link>
+                      </SheetClose>
                       <span
                         className="h-[1px]  border-white border-opacity-25 w-full border-t"
                         aria-hidden
                       />
-                      <Link
-                        className="flex  w-full  items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
-                        href="/progress"
-                      >
-                        <ActivityIcon className="h-5 w-5" />
-                        <span>Progress</span>
-                      </Link>
+                      <SheetClose asChild>
+                        <Link
+                          className="flex  w-full  items-center gap-2 text-white dark:text-[#f8f8f8] font-medium"
+                          href="/progress"
+                        >
+                          <ActivityIcon className="h-5 w-5" />
+                          <span>Progress</span>
+                        </Link>
+                      </SheetClose>
                       <span
                         className="h-[1px] border-white border-opacity-25 w-full border-t"
                         aria-hidden
                       />
-                      <Link
-                        className="flex w-full  items-center gap-2 text-gray-200 dark:text-[#f8f8f8] font-medium"
-                        href="/about"
-                      >
-                        <InfoIcon className="h-5 w-5" />
-                        <span>About</span>
-                      </Link>
+                      <SheetClose asChild>
+                        <Link
+                          className="flex w-full  items-center gap-2 text-gray-200 dark:text-[#f8f8f8] font-medium"
+                          href="/about"
+                        >
+                          <InfoIcon className="h-5 w-5" />
+                          <span>About</span>
+                        </Link>
+                      </SheetClose>
                       <span
                         className="h-[1px] border-white border-opacity-25 w-full border-t"
                         aria-hidden

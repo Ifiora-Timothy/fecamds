@@ -72,7 +72,7 @@ export default function Component() {
                   />
                 </div>
 
-                <Button className="w-full">Continue your journey</Button>
+                <Button className="w-full ">Continue your journey</Button>
               </form>
               <div className="text-center text-xs text-gray-300 dark:text-gray-300">
                 Don&apos;t have an account?
